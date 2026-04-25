@@ -10,6 +10,10 @@
 
 <h1 align="center">Light and Versatile Graphics Library</h1>
 
+<p align="center">
+  <a href="https://membrowse.com/public/membrowse/lvgl"><img src="https://membrowse.com/badge.svg" alt="MemBrowse"></a>
+</p>
+
 <br/>
 
 <div align="center">

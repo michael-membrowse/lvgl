@@ -1,0 +1,24 @@
+[
+  {
+    "target_name": "linux-x64",
+    "container": "",
+    "checkout_path": "",
+    "setup_cmd": "sudo apt-get update && sudo apt-get install -y build-essential",
+    "build_cmd": "CFLAGS=-g make -C tests/makefiles test_file && cc -Wl,-Map=tests/makefiles/test_file.map -o tests/makefiles/test_file $(find src demos examples tests/makefiles -name '*.o')",
+    "elf": "tests/makefiles/test_file",
+    "ld": "",
+    "map_file": "tests/makefiles/test_file.map",
+    "linker_vars": ""
+  },
+  {
+    "target_name": "esp32-s3",
+    "container": "espressif/idf:v5.3.1",
+    "checkout_path": "components/lvgl",
+    "setup_cmd": "ln -s components/lvgl/.git .git && . /opt/esp/idf/export.sh && echo \"$IDF_PYTHON_ENV_PATH/bin\" >> $GITHUB_PATH && cp -r $IDF_PATH/examples/get-started/hello_world/* . && idf.py set-target esp32s3",
+    "build_cmd": ". /opt/esp/idf/export.sh && idf.py build",
+    "elf": "build/hello_world.elf",
+    "ld": "build/esp-idf/esp_system/ld/sections.ld build/esp-idf/esp_system/ld/memory.ld",
+    "map_file": "build/hello_world.map",
+    "linker_vars": ""
+  }
+]
